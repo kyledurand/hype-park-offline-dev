@@ -1,0 +1,61 @@
+//    _      ___   _____  _   _ _____
+//   | |    /_\ \ / / _ \| | | |_   _|
+//   | |__ / _ \ V / (_) | |_| | | |
+//   |____/_/ \_\_| \___/ \___/  |_|
+//
+// =========================================================================================
+// =========================================================================================
+//
+// Use this stylesheet for site-wide layout concerns.
+
+html,
+body {
+  height: 100vh;
+  width: 100%;
+}
+
+.page {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.page__content {
+  flex: 1 1 auto;
+}
+
+.page--is-blurred {
+  filter: blur(5px);
+}
+
+// Reusable layout elements
+
+.split-primary {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 50vh;
+
+  @include after(stack-flip) {
+    width: 50vw;
+    height: 100vh;
+    float: left;
+  }
+}
+
+.split-secondary {
+  @include after(stack-flip) {
+    float: right;
+    width: 50vw;
+    height: 100%;
+  }
+}
+
+hr {
+  border-top: default(border);
+  border-width: $border-width 0 0 0;
+  margin: (default(small-spacing) / 2) auto default(spacing);
+  max-width: 2 * default(large-spacing);
+  height: 0;
+}

@@ -1,0 +1,104 @@
+$logo-size: 58px;
+
+.header {
+  @extend %clearfix;
+  position: absolute;
+  width: 100%;
+  display: block;
+}
+
+.header__logo {
+  float: left;
+  width: $logo-size;
+  height: $logo-size;
+  margin: default(spacing);
+}
+
+.header__menu {
+  float: right;
+  margin: 0;
+  padding: default(spacing) default(spacing) default(spacing) (3 * default(spacing));
+  height: 50vh;
+  background: default(linear-gradient);
+  background-repeat: no-repeat;
+  background-position-x: 16vw; // Partially hidden off screen
+  @include transition(opacity transition(in-fast), background transition(in-fast));
+
+  @include after(stack-flip) {
+    background: none;
+    height: auto;
+  }
+
+  ul,
+  button {
+    padding: default(small-spacing) 0;
+    padding-left: default(small-spacing);
+    margin: 0 0 0 auto;
+  }
+
+  ul {
+    opacity: 0;
+    height: 0;
+    transform: translatex(3%);
+    transition: transform 0.25s ease-in-out, opacity 0.25s ease-in-out, height 0.25s ease-in-out;
+  }
+
+  &.header__menu--is-expanded {
+    background-position-x: initial;
+    // transition: background-position 0.25s ease-in-out;
+
+    ul {
+      opacity: 1;
+      height: 100%;
+      transform: translatex(0);
+    }
+  }
+}
+
+.header__menu-item {
+  @include font-size(menu);
+  @include default(letter-spacing);
+  text-transform: uppercase;
+  display: block;
+  padding: default(small-spacing) 0;
+  color: color-control(color(menu-gradient));
+
+  @include after(stack-flip) {
+    color: color-control(color(page-background));
+  }
+}
+
+.header__menu-icons {
+  position: absolute;
+  bottom: default(spacing);
+  right: default(spacing);
+
+  @include after(stack-flip) {
+    position: initial;
+  }
+}
+
+.header__menu-item--inline {
+  display: inline-block;
+  margin: 0 (default(small-spacing) / 2);
+}
+
+.plus-minus {
+  &:before {
+    font-size: font-size(menu) - 4;
+    display: inline-block;
+    content: "+";
+    margin-right: default(small-spacing);
+    position: relative;
+    bottom: 2px;
+  }
+
+  .header__menu--is-expanded & {
+    &:before {
+      display: inline-block;
+      content: "-";
+    }
+  }
+}
+
+

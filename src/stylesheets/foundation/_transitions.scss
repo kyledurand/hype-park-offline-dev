@@ -1,0 +1,24 @@
+// Animations
+//
+// =========================================================================================
+// =========================================================================================
+//
+// This stylesheet provides a centralized location to manage colors. Colors
+// should not be declared in CSS directly; instead, add the color to the
+// `$ANIMATIONS` map (following the <color>-<modifier> naming convention) and
+// then included using the `color()` function.
+
+
+
+$TRANSITIONS: (
+  in-fast: 0.25s ease-in-out,
+  out-fast: 0.25s ease-in-out
+);
+
+@function transition($element) {
+  @return map-get($TRANSITIONS, $element);
+}
+
+@mixin transition($transition...) {
+  transition: $transition;
+}

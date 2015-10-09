@@ -1,0 +1,75 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="ie9 no-js"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="shortcut icon" href="assets/favicon.png" />
+  <link rel="canonical" href="{{ case_sensitive_canonical_url }}">
+  <title>Hyde Park</title>
+  <link rel="stylesheet" href="assets/theme.css">
+</head>
+<body>
+  <div class="page page--{{ template }}">
+
+    <header class="header">
+      <div class="header__logo">
+        <img src="assets/logo.svg">
+      </div>
+
+      <nav class="header__menu type--right">
+        <button class="header__menu-item plus-minus js-menu-toggle">Menu</button>
+        <ul>
+          <li class="header__menu-item">Exclusives</li>
+          <li class="header__menu-item">Headwear</li>
+          <li class="header__menu-item">Outerwear</li>
+          <li class="header__menu-item">Fleece</li>
+          <li class="header__menu-item">Tops</li>
+          <li class="header__menu-item">Tees</li>
+          <li class="header__menu-item">Bottoms</li>
+          <li class="header__menu-item">Accessories</li>
+        </ul>
+
+        <div class="header__menu-icons">
+          <button class="header__menu-item header__menu-item--inline">
+            <img class="icon icon--16 icon--light" src="assets/search.svg">
+          </button>
+          <button class="header__menu-item header__menu-item--inline">
+            <img class="icon icon--16 icon--light" src="assets/share.svg">
+          </button>
+          <button class="header__menu-item header__menu-item--inline">
+            <img class="icon icon--16 icon--light" src="assets/cart.svg">
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <div class="page__content {% unless shop.products_count > 0 %} page__content--no-products{% endunless %}{% unless shop.description == blank %} has-shop-description{% endunless %}">
+    <section class="split-primary hero">
+        <div class="hero-menu-gradient"></div>
+      </section>
+      <section class="split-secondary featured-content">
+        <h2 class="type type--heading type--heading-1 type--centered">Featured</h2>
+        <hr>
+      </section>
+    </div>
+
+    <footer class="footer">
+      <span class="footer__cta">footer</span>
+    </footer>
+
+  </div>
+
+  <script type="text/javascript">
+    function menu_toggle(){
+      this.parentElement.classList.toggle('header__menu--is-expanded');
+    }
+    document.querySelector('.js-menu-toggle').addEventListener('click', menu_toggle )
+</script>
+</body>
+</html>
+
